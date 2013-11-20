@@ -13,3 +13,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(document).ready(function(){
+  $('button').on('click', function(e) {
+    $.ajax({
+      type: 'get',
+      url: '/get_' + this.id
+    }).done(function(data){
+      $('#data').empty();
+      $.each(data, function(index, element) {
+        $('#data').append('<li>' + element + '</li>')
+      });
+    });
+  });
+});
+
